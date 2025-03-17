@@ -64,14 +64,23 @@ function formatCost(cost) {
   
   // If it's already a string
   if (typeof cost === 'string') {
-    // If it already has a currency symbol, return as is
-    if (cost.startsWith('$') || cost.startsWith('₹')) {
+    // If it already has a rupee symbol, return as is
+    if (cost.startsWith('₹')) {
       return cost;
+    }
+    // If it has a dollar symbol, replace with rupee
+    if (cost.startsWith('$')) {
+      const amount = cost.substring(1);
+      const parsed = parseFloat(amount);
+      if (!isNaN(parsed)) {
+        return `₹${parsed}`;
+      }
+      return `₹${amount}`;
     }
     // Try to parse it as a number
     const parsed = parseFloat(cost);
     if (!isNaN(parsed)) {
-      return `$${parsed}`;
+      return `₹${parsed}`;
     }
     // Return as is if it can't be parsed
     return cost;
@@ -79,7 +88,7 @@ function formatCost(cost) {
   
   // If it's a number
   if (typeof cost === 'number') {
-    return `$${cost}`;
+    return `₹${cost}`;
   }
   
   // Fallback
@@ -214,13 +223,13 @@ function TravelPlanner() {
             </div>
 
             <div>
-              <label htmlFor="budget" className="block text-sm font-medium text-gray-700">What's your budget? (USD)</label>
+              <label htmlFor="budget" className="block text-sm font-medium text-gray-700">What's your budget? (INR)</label>
               <input
                 type="number"
                 id="budget"
                 value={budget}
                 onChange={(e) => setBudget(e.target.value)}
-                placeholder="3000"
+                placeholder="150000"
                 required
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
               />
@@ -279,7 +288,7 @@ function TravelPlanner() {
                 <div className="bg-white rounded-xl shadow-lg p-6 mb-4">
                   <h2 className="text-2xl font-bold text-gray-800 mb-3">Trip Summary</h2>
                   <p className="text-gray-700 mb-2"><strong>Destination:</strong> {location}</p>
-                  <p className="text-gray-700 mb-2"><strong>Budget:</strong> ${budget}</p>
+                  <p className="text-gray-700 mb-2"><strong>Budget:</strong> ₹{budget}</p>
                   <p className="text-gray-700 mb-2"><strong>Duration:</strong> {startDate} to {endDate}</p>
                   {travelPlan.total_cost && (
                     <p className="text-gray-700 mb-2">

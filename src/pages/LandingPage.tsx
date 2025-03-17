@@ -87,10 +87,11 @@ function LandingPage() {
       <div className="container mx-auto px-4 py-8 relative z-10">
         {/* Navigation */}
         <nav className="flex justify-between items-center mb-12">
-          <div className="flex items-center">
-            <Plane className="w-8 h-8 text-indigo-600" />
-            <span className="ml-2 text-2xl font-bold text-gray-800">TravelAI</span>
-          </div>
+        <div className="flex items-center">
+  <img src="/travelailogo.png" alt="TravelAI Logo" className="w-22 h-8" />
+  {/* <span className="ml-2 text-2xl font-bold text-gray-800">TravelAI</span> */}
+</div>
+
           <div className="hidden md:flex space-x-6">
             <a href="#features" className="text-gray-600 hover:text-indigo-600">Features</a>
             <a href="#testimonials" className="text-gray-600 hover:text-indigo-600">Testimonials</a>
@@ -337,7 +338,7 @@ function LandingPage() {
                 <Mail className="w-8 h-8 text-indigo-600" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Email Us</h3>
-              <p className="text-gray-600">support@travelai.com</p>
+              <p className="text-gray-600">support@travelai.nexora-ai.co.in</p>
             </div>
             
             <div className="bg-white p-6 rounded-xl shadow-md text-center">
@@ -345,7 +346,7 @@ function LandingPage() {
                 <Phone className="w-8 h-8 text-indigo-600" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Call Us</h3>
-              <p className="text-gray-600">+1 (888) 555-TRAVEL</p>
+              <p className="text-gray-600">+91 9265417748-TRAVEL</p>
             </div>
             
             <div className="bg-white p-6 rounded-xl shadow-md text-center">
