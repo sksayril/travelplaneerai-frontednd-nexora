@@ -5,7 +5,7 @@ const genAI = new GoogleGenerativeAI("AIzaSyB9oQ2ibthHs30PLjqopWkRasjMiqhmN1Q");
 const USD_TO_INR = 83; // Average conversion rate (you might want to use a real-time API in production)
 
 export async function generateTravelPlan(location: string, budget: number, startDate: string, endDate: string, travelDays: number) {
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
   const budgetInINR = Math.round(budget * USD_TO_INR);
 
   const prompt = `Generate a detailed travel plan for ${location} within a budget of $${budget} (₹${budgetInINR}) from ${startDate} to ${endDate} for ${travelDays} days. The response **must be in JSON format** as per the structure below:
